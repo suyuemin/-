@@ -19,7 +19,7 @@
         </el-table>
         <el-dialog title="添加" :visible.sync="dialogVisible" width="30%">
             <el-form>
-                <el-form-item label="视频标题">
+                <el-form-item label="资源标题">
                     <el-input v-model="title"></el-input>
                 </el-form-item>
                 <el-form-item label="资源地址">
@@ -72,6 +72,8 @@ export default {
         createResource() {
             this.dialogVisible = true;
             this.title = "";
+            this.url = "";
+            this.code = "";
             this.isEdit = false;
         },
         deleteRosource(id) {

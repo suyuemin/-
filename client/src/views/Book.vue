@@ -91,6 +91,8 @@ export default {
         createBook() {
             this.dialogVisible = true;
             this.title = "";
+            this.img = "";
+            this.orderby = "";
             this.isEdit = false;
         },
         deleteBook(id) {

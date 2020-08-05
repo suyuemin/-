@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{title}}</title>
-    <meta name="keywords" content="前端开发,javascript,php,node,jquery,git,python,java,sql,mysql,linux,go语言,golang,前端,教程,软件,编程,互联网">
-    <meta name="description" content="这里有程序员学习教程, 内容涵盖WEB前端、java、python、Golang、PHP等学习内容， 内容形式包括学习资料、学习文档、学习方法、就业指导等，通过全面的学习内容，为新手程序员打下坚实的理论基础。">
+    <meta name="keywords" content="前端开发,javascript,php,node,jquery,git,python,java,sql,mysql,linux,go语言,golang,前端,教程,软件,编程,互联网,晓舟报告">
+    <meta name="description" content="晓舟报告是程序员学习教程, 内容涵盖WEB前端、java、python、Golang、PHP等学习内容， 内容形式包括学习资料、学习文档、学习方法、就业指导等，通过全面的学习内容，为新手程序员打下坚实的理论基础。">
     <link rel="stylesheet" href="/css/pc/layout.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/pc/pc_common.css">
@@ -56,22 +56,28 @@
                     <span class="glyphicon glyphicon-search text-success" aria-hidden="true"></span>
                 </button>
             </from>
-
+            
         </div>
     </div>
     <div class="hyperlink ">
         <div class="Code ">
-            <img src="/img/pc/suyuemin.jpg" alt="weixin ">
-            <p style="font-size: 12px; text-align: center;">添加个人微信</p>
+            <img src="/img/pc/xiaozhou.jpg" alt="weixin ">
+            <p style="font-size: 12px; text-align: center;">添加晓舟个人微信</p>
         </div>
         <div class="CodeTeam ">
-            <img src="/img/pc/suyuemin.jpg" alt="weixin ">
-            <p style="font-size: 12px; text-align: center;">关注公众号</p>
+            <img src="/img/pc/mpxiaozhou.jpg" alt="weixin ">
+            <p style="font-size: 12px; text-align: center;">关注晓舟报告公众号</p>
         </div>
         <ul>
-            <li class="user "><img src="/img/pc/联系人.png " alt=" " onmouseover="this.src='/img/pc/联系人bu.png' " onmouseout="this.src='/img/pc/联系人.png' " /></li>
-            <li class="codeUser "><img src="/img/pc/微信.png " alt=" " onmouseover="this.src='/img/pc/微信bu.png' " onmouseout="this.src='/img/pc/微信.png' " /></li>
-            <li class="toTop "><img src="/img/pc/返回顶部.png " alt=" " onmouseover="this.src='/img/pc/返回bu.png' " onmouseout="this.src='/img/pc/返回顶部.png' " /></li>
+            <li class="user "><img src="/img/pc/联系人.png " alt=" "
+                    onmouseover="this.src='/img/pc/联系人bu.png' "
+                    onmouseout="this.src='/img/pc/联系人.png' " /></li>
+            <li class="codeUser "><img src="/img/pc/微信.png " alt=" "
+                    onmouseover="this.src='/img/pc/微信bu.png' "
+                    onmouseout="this.src='/img/pc/微信.png' " /></li>
+            <li class="toTop "><img src="/img/pc/返回顶部.png " alt=" "
+                    onmouseover="this.src='/img/pc/返回bu.png' "
+                    onmouseout="this.src='/img/pc/返回顶部.png' " /></li>
         </ul>
     </div>
     {% block content %} {% endblock %} {% block js %} {% endblock %}
@@ -80,27 +86,27 @@
     <script src="/js/swiper.min.js"></script>
     <script>
         //移入移出
-        $(".user ").hover(function() {
+        $(".user ").hover(function () {
             $(".Code ").show();
-        }, function() {
+        }, function () {
             $(".Code ").hide();
         });
-        $(".codeUser ").hover(function() {
+        $(".codeUser ").hover(function () {
             $(".CodeTeam ").show();
-        }, function() {
+        }, function () {
             $(".CodeTeam ").hide();
         });
         //返回顶部
-        $(".toTop").click(function() {
+        $(".toTop").click(function () {
             $("html,body").animate({
                 "scrollTop": "0px"
             }, 200)
         })
 
         //移入移出菜单
-        $(".sigin").mouseenter(function(e) {
+        $(".sigin").mouseenter(function (e) {
             $(".addShow ul").removeClass('hide');
-        }).mouseleave(function(e) {
+        }).mouseleave(function (e) {
             $(".addShow ul").addClass("hide")
         });
 
@@ -149,9 +155,9 @@
 
         var swiper = new Swiper('.swiper-container', {
             autoplay: {
-                delay: 2000, //1秒切换一次
+                delay: 2000,//1秒切换一次
             },
-            loop: true,
+            loop : true,
             pagination: {
                 el: '.swiper-pagination',
                 dynamicBullets: true,

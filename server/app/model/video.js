@@ -6,7 +6,7 @@ module.exports = app => {
         // 视频的封面图片
         img: STRING,
         // B站视频地址
-        ifrname_url: STRING,
+        iframe_url: STRING,
 
     })
 

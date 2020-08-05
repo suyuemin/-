@@ -125,14 +125,14 @@ class BlogController extends Controller {
         // 查询成功返回查询结果
         // 查询失败返回null
         let data = await this.ctx.service.website.getBlogList();
-        this.ctx.body = data;
-        // if (ua) {
-        //     // pc端
-        //     await ctx.render("pc/blog.html", data);
-        // } else {
-        //     // 移动端
-        //     await ctx.render("phone/blog.html", data);
-        // }
+        // this.ctx.body = data;
+        if (ua) {
+            // pc端
+            await ctx.render("pc/blog.html", data);
+        } else {
+            // 移动端
+            await ctx.render("phone/blog.html", data);
+        }
 
     }
 
@@ -149,12 +149,12 @@ class BlogController extends Controller {
         // 查询成功返回查询结果
         // 查询失败返回null
         let data = await this.ctx.service.website.getBlogDetail(id);
-        this.ctx.body = data;
-        // if (ua) {
-        //     await ctx.render("pc/blog_detail.html", data);
-        // } else {
-        //     await ctx.render("phone/blog_detail.html", data);
-        // }
+        // this.ctx.body = data;
+        if (ua) {
+            await ctx.render("pc/blog_detail.html", data);
+        } else {
+            await ctx.render("phone/blog_detail.html", data);
+        }
     }
 
 }
