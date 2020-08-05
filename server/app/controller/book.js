@@ -114,31 +114,35 @@ class BookController extends Controller {
         }
     }
 
-    // 博客列表页面
-    async getBlogList() {
+    // 书籍列表页面
+    async getBookList() {
+        const { ctx } = this;
         // 检测用户用的是手机浏览还是电脑浏览
         // pc: 1
         // mobile：0
-        // const ua = checkAgent(ctx.request.header["user-agent"]);
-        // 向数据库中查询前100条的博客
-        // 查询成功返回前100条的博客blog
+        const ua = checkAgent(ctx.request.header["user-agent"]);
+        // 向数据库中查询书籍列表
+        // 查询成功返回查询结果   所有书籍、推荐书籍、推荐博客、推荐视频、title
         // 查询失败返回null
-        let result = await this.ctx.service.website.getBlogList()
-        if (result) {
-            this.ctx.body = {
-                code: 20000,
-                message: true,
-                data: result
-            }
-        } else {
-            this.ctx.body = {
-                code: 20000,
-                message: false,
-            }
-        }
+        let data = await this.ctx.service.website.getBookList();
+        this.ctx.body = data;
+        // if (ua) {
+        //     await this.ctx.render("pc/book.html", data);
+        // } else {
+        //     await this.ctx.render("phone/book.html", data)
+        // }
 
     }
 
+    // 查看某一书籍详情、章节列表
+    async toFirstSection() {
+        // 获取书的id
+        const id = this.ctx.params.id;
+        // 获取本书的第一章第一节id
+        let section_id = await this.ctx.service.book.getFirstSectionIdByBookId(id);
+        // 重定向到 ‘查看某一节的详情’ 的路由
+        await this.ctx.redirect(`/section/${section_id}`)
+    }
 }
 
 module.exports = BookController;

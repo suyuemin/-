@@ -7,13 +7,16 @@ const checkAgent = require('../utils/checkagent');
 class HomeController extends Controller {
     async index() {
         const { ctx } = this;
-
-        // 返回值:
-        // 0 手机
-        // 1 平板
-        // 2 pc
+        // 检测设备
         const ua = checkAgent(ctx.request.header["user-agent"]);
-        // let data = await this.ctx.service.website.
+        // data： 书、博客、推荐书、推荐博客、推荐视频
+        let data = await this.ctx.service.website.getHomePageData();
+        this.ctx.body = data;
+        //     if (ua) {
+        //         await ctx.render("pc/home.html", data)
+        //     } else {
+        //         await ctx.render("phone/home.html", data);
+        //     }
     }
 }
 

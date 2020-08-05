@@ -85,7 +85,33 @@ class BookService extends Service {
     }
 
 
+    async getFirstSectionIdByBookId(id) {
+        // 获取书对应的所有章
+        const chapters = await this.app.model.Chapter.findAll({
+            'order': [
+                ['orderby', 'asc']
+            ],
+            where: {
+                book_id: id
+            }
+        })
 
+        // 拿到所有章中的第一章
+        let firstChapterId = chapters[0].dataValues.id;
+
+        // 获取第一章的所有节
+        const sections = await this.app.model.Section.findAll({
+            'order': [
+                ['orderby', 'asc']
+            ],
+            where: {
+                chapter_id: firstChapterId
+            }
+        })
+
+        // 返回第一章的第一节
+        return sections[0].dataValues.id;
+    }
 
 
 }

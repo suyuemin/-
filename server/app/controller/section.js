@@ -115,8 +115,20 @@ class SectionController extends Controller {
         }
     }
 
-
-
+    // 查看某一节的详情
+    async getSectionDetail() {
+        const { ctx } = this;
+        // 获取节的id
+        const id = this.ctx.params.id;
+        // 根据节id查询   节内容、本书章节目录、所有书籍
+        let data = await this.ctx.service.website.getSectionDetail(id);
+        this.ctx.body = data;
+        // if (ua) {
+        //     await this.ctx.render("pc/book_detail.html", data);
+        // } else {
+        //     await this.ctx.render("phone/book_detail.html", data);
+        // }
+    }
 }
 
 module.exports = SectionController;

@@ -115,8 +115,38 @@ class VideoController extends Controller {
         }
     }
 
+    // 视频展示列表
+    async getVideoList() {
+        const { ctx } = this;
+        // 检测手机端还是pc  pc=> 1    phone=> 0
+        const ua = checkAgent(ctx.request.header["user-agent"]);
+        // 返回前100个视频、推荐书、推荐博客、推荐一个视频、title  
+        const data = await this.ctx.service.website.getVideoList();
+        this.ctx.body = data;
+        // if (ua) {
+        //     await ctx.render("pc/video.html", data);
+        // } else {
+        //     await ctx.render("phone/video.html", data);
+        // }
+    }
 
+    // 查看某一视频详情
+    async getVideoDetail() {
+        const { ctx } = this;
+        // 检测手机端还是pc  pc=> 1    phone=> 0
+        const ua = checkAgent(ctx.request.header["user-agent"]);
+        // 获取视频id
+        let id = this.ctx.params.id;
+        // 返回id对应的视频类别、该类别的所有视频、title  
+        const data = await this.ctx.service.website.getVideoDetail(id);
+        this.ctx.body = data;
+        // if (ua) {
+        //     await ctx.render("pc/video_detail.html", data);
+        // } else {
+        //     await ctx.render("phone/video_detail.html", data);
+        // }
 
+    }
 }
 
 module.exports = VideoController;

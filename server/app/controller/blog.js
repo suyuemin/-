@@ -114,25 +114,47 @@ class BlogController extends Controller {
         }
     }
 
-    // 博客列表页面
+    // 博客列表页面展示
     async getBlogList() {
         const { ctx } = this
         // 检测用户用的是手机浏览还是电脑浏览
         // pc: 1
         // mobile：0
         const ua = checkAgent(ctx.request.header["user-agent"]);
-        // 向数据库中查询前100条的博客
-        // 查询成功返回前100条的博客blog
+        // 向数据库中查询前100条的博客、推荐博客、推荐书、title
+        // 查询成功返回查询结果
         // 查询失败返回null
-        let data = await this.ctx.service.website.getBlogList()
-        if (ua) {
-            // pc端
-            await ctx.render("pc/blog.html", data);
-        } else {
-            // 移动端
-            await ctx.render("phone/blog.html", data);
-        }
+        let data = await this.ctx.service.website.getBlogList();
+        this.ctx.body = data;
+        // if (ua) {
+        //     // pc端
+        //     await ctx.render("pc/blog.html", data);
+        // } else {
+        //     // 移动端
+        //     await ctx.render("phone/blog.html", data);
+        // }
 
+    }
+
+    // 查看具体某一篇博客的详情展示页面
+    async getBlogDetail() {
+        const { ctx } = this;
+        // 检测用户用的是手机浏览还是电脑浏览
+        // pc: 1
+        // mobile：0
+        const ua = checkAgent(ctx.request.header["user-agent"]);
+        // 获取博客id
+        const id = this.ctx.params.id;
+        // 向数据库中查询id对应的博客详情、推荐博客、推荐书、title
+        // 查询成功返回查询结果
+        // 查询失败返回null
+        let data = await this.ctx.service.website.getBlogDetail(id);
+        this.ctx.body = data;
+        // if (ua) {
+        //     await ctx.render("pc/blog_detail.html", data);
+        // } else {
+        //     await ctx.render("phone/blog_detail.html", data);
+        // }
     }
 
 }

@@ -7,9 +7,24 @@ module.exports = app => {
     const { router, controller } = app;
 
     // 网页
-    // router.get('/', controller.home.index);
+    // 首页
+    router.get('/', controller.home.index);
     // 博客展示列表
     router.get("/blog", controller.blog.getBlogList);
+    // 查看具体某一篇博客的详情
+    router.get('/blog/:id', controller.blog.getBlogDetail);
+    // 视频展示列表
+    router.get('/video', controller.video.getVideoList);
+    // 查看某一视频详情
+    router.get('/video/:id', controller.video.getVideoDetail);
+    // 资源展示列表
+    router.get('/resource', controller.resource.getResourceList);
+    // 书籍展示列表
+    router.get('/book', controller.book.getBookList);
+    // 查看某一书籍详情、章节列表
+    router.get('/book/:id', controller.book.toFirstSection);
+    // 查看某一节的详情
+    router.get('/section/:id', controller.section.getSectionDetail);
 
     // 后台功能接口
     // 登录

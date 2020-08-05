@@ -92,8 +92,20 @@ class ResourceController extends Controller {
 
     }
 
-
-
+    // 下载列表
+    async getResourceList() {
+        const { ctx } = this;
+        // 检测设备
+        const ua = checkAgent(ctx.request.header["user-agent"]);
+        // 返回资源列表、推荐书、推荐博客、title
+        let data = await this.ctx.service.website.getResourceList();
+        this.ctx.body = data;
+        // if (ua) {
+        // 	await ctx.render("pc/resource.html", data);
+        // } else {
+        // 	await ctx.render("phone/resource.html", data);
+        // }
+    }
 
 
 }

@@ -10,28 +10,45 @@ class WebsitService extends Service {
 
     //首页
     async getHomePageData() {
-        let bookList = await this.ctx.service.book.getBookList({ page: 1, total: 3 }) //推荐书
-        let blogList = await this.ctx.service.blog.getBlogList({ page: 1, total: 3 }) //推荐博客
-        let recommendBook = await this.ctx.service.book.getBookList({ page: 1, total: 1 }) //推荐书
-        let recommendBlog = await this.ctx.service.blog.getBlogList({ page: 1, total: 3 }) //推荐博客
-        let videoList = await this.ctx.service.video.getVideoList({ page: 1, total: 3 }) //推荐一个视频
+        // 推荐书
+        let bookList = await this.ctx.service.book.getBookList({ page: 1, total: 3 })
+
+        // 推荐博客
+        let blogList = await this.ctx.service.blog.getBlogList({ page: 1, total: 3 })
+
+        // 推荐书
+        let recommendBook = await this.ctx.service.book.getBookList({ page: 1, total: 1 })
+
+        // 推荐博客
+        let recommendBlog = await this.ctx.service.blog.getBlogList({ page: 1, total: 3 })
+
+        // 推荐一个视频
+        let recommendvideo = await this.ctx.service.video.getVideoList({ page: 1, total: 1 })
         let title = "首页-suyuemin"
         return {
             bookList,
             blogList,
-            videoList,
             recommendBook,
             recommendBlog,
+            recommendvideo,
             title
         }
     };
 
     //电子书列表
     async getBookList() {
-        let bookList = await this.ctx.service.book.getBookList({ page: 1, total: 100 }); //所有书籍
-        let recommendBook = await this.ctx.service.book.getBookList({ page: 1, total: 3 }) //推荐书
-        let recommendBlog = await this.ctx.service.blog.getBlogList({ page: 1, total: 3 }) //推荐博客
-        let recommendVideo = await this.ctx.service.video.getVideoList({ page: 1, total: 3 }) //推荐一个视频
+        // 所有书籍
+        let bookList = await this.ctx.service.book.getBookList({ page: 1, total: 100 });
+
+        // 推荐书
+        let recommendBook = await this.ctx.service.book.getBookList({ page: 1, total: 3 })
+
+        // 推荐博客
+        let recommendBlog = await this.ctx.service.blog.getBlogList({ page: 1, total: 3 })
+
+        // 推荐一个视频
+        let recommendVideo = await this.ctx.service.video.getVideoList({ page: 1, total: 1 })
+
         let title = "学习手册-suyuemin"
         return {
             bookList,
@@ -44,9 +61,14 @@ class WebsitService extends Service {
 
     //电子书详情 -- 待完善，获取目录
     async getSectionDetail(id) {
-        let section = await this.ctx.service.section.getSectionDetail(id) //通过笑节id获取内容
-        let menu = await this.ctx.service.section.getMenuBySectionId(id) //通过书的id获取这本书的章节目录
-        let bookList = await this.ctx.service.book.getBookList({ page: 1, total: 100 }); //获取所有书籍
+        // 通过节id获取内容
+        let section = await this.ctx.service.section.getSectionDetail(id)
+
+        // 通过书的id获取这本书的章节目录
+        let menu = await this.ctx.service.section.getMenuBySectionId(id);
+
+        // 获取所有书籍
+        let bookList = await this.ctx.service.book.getBookList({ page: 1, total: 100 });
         return {
             section,
             bookList,
@@ -80,29 +102,21 @@ class WebsitService extends Service {
         } catch (e) {
             return null;
         }
-
-
-
-
-        // // 获取前3本书籍作为推荐书籍
-        // let recommendBook = await this.ctx.service.book.getBookList({ page: 1, total: 3 })
-
-        // // 标题
-        // let title = "博客-suyuemin"
-        return {
-            blog,
-            // recommendBook,
-            // recommendBlog,
-            // title,
-        }
     }
 
     //博客详情
     async getBlogDetail(id) {
-        let blog = await this.ctx.service.blog.getBlogDetail(id) //查看一篇博客
-        let recommendBook = await this.ctx.service.book.getBookList({ page: 1, total: 3 }) //推荐书
-        let recommendBlog = await this.ctx.service.blog.getBlogList({ page: 1, total: 3 }) //推荐博客
-        let title = blog.title + "-suyuemin" //标题
+        // 查看一篇博客
+        let blog = await this.ctx.service.blog.getBlogDetail(id)
+
+        // 推荐书
+        let recommendBook = await this.ctx.service.book.getBookList({ page: 1, total: 3 })
+
+        // 推荐博客
+        let recommendBlog = await this.ctx.service.blog.getBlogList({ page: 1, total: 3 })
+
+        //标题
+        let title = blog.title + "-suyuemin"
         return {
             blog: blog,
             recommendBook,
@@ -111,12 +125,19 @@ class WebsitService extends Service {
         }
     }
 
-    //下载列表
+    // 下载列表
     async getResourceList() {
-        let resourceList = await this.ctx.service.resource.getResourceList({ page: 1, total: 100 }) //获取所有资源
-        let recommendBook = await this.ctx.service.book.getBookList({ page: 1, total: 1 }) //推荐书
-        let recommendBlog = await this.ctx.service.blog.getBlogList({ page: 1, total: 3 }) //推荐博客
-        let title = "资源下载-suyuemin" //标题
+        //获取所有资源
+        let resourceList = await this.ctx.service.resource.getResourceList({ page: 1, total: 100 })
+
+        // 推荐书
+        let recommendBook = await this.ctx.service.book.getBookList({ page: 1, total: 1 })
+
+        // 推荐博客
+        let recommendBlog = await this.ctx.service.blog.getBlogList({ page: 1, total: 3 })
+
+        //标题
+        let title = "资源下载-suyuemin"
         return {
             resourceList,
             recommendBook,
@@ -127,11 +148,20 @@ class WebsitService extends Service {
 
     //视频列表
     async getVideoList() {
-        let videoList = await this.ctx.service.video.getVideoList({ page: 1, total: 100 }) //查看所有视频类别以及视频类别所属的视频
-        let recommendBook = await this.ctx.service.book.getBookList({ page: 1, total: 3 }) //推荐书
-        let recommendBlog = await this.ctx.service.blog.getBlogList({ page: 1, total: 3 }) //推荐博客
-        let recommendVideo = await this.ctx.service.video.getVideoList({ page: 1, total: 3 }) //推荐一个视频
-        let title = '视频-suyuemin' //标题名称
+        // 查看所有视频类别以及视频类别所属的视频
+        let videoList = await this.ctx.service.video.getVideoList({ page: 1, total: 100 })
+
+        // 推荐书
+        let recommendBook = await this.ctx.service.book.getBookList({ page: 1, total: 3 })
+
+        // 推荐博客
+        let recommendBlog = await this.ctx.service.blog.getBlogList({ page: 1, total: 3 })
+
+        // 推荐一个视频
+        let recommendVideo = await this.ctx.service.video.getVideoList({ page: 1, total: 1 })
+
+        // 标题名称
+        let title = '视频-suyuemin'
         return {
             videoList,
             recommendBook,
@@ -143,8 +173,13 @@ class WebsitService extends Service {
 
     //获取视频类别详情
     async getVideoDetail(id) {
-        let video = await this.ctx.service.video.getVideoDetail(id); //通过视频类别id获取视频类别
-        let videoList = await this.ctx.service.video.getVideoList({ page: 1, total: 100 }); //通过视频类别的id获取这个视频类别的所有视频
+        // 通过视频类别id获取视频类别 
+        let video = await this.ctx.service.video.getVideoDetail(id);
+
+        // 通过视频类别的id获取这个视频类别的所有视频
+        let videoList = await this.ctx.service.video.getVideoList({ page: 1, total: 100 });
+
+        // 视频标题
         let title = video.title + "-suyuemin"
         return {
             video,
@@ -152,6 +187,8 @@ class WebsitService extends Service {
             title
         }
     }
+
+
 }
 
 module.exports = WebsitService;
