@@ -1,13 +1,6 @@
-{% extends "./layout.html" %}
-
-{% block css %}
+{% extends "./layout.html" %} {% block css %}
 <link rel="stylesheet" href="/css/phone/home.css">
-<link rel="stylesheet" href="/css/swiper.min.css">
-
-{% endblock %}
-
-
-{% block content %}
+<link rel="stylesheet" href="/css/swiper.min.css"> {% endblock %} {% block content %}
 <div class="header">
     <img src="/img/phone/Magnifier.png" alt="" />
     <input type="text" placeholder="输入搜索内容" id="search_input" />
@@ -16,13 +9,13 @@
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <img src="/img/phone/1.jpg">
+                <img src="/images/1.jpg">
             </div>
             <div class="swiper-slide">
-                <img src="/img/phone/2.jpg">
+                <img src="/images/2.jpg">
             </div>
             <div class="swiper-slide">
-                <img src="/img/phone/3.jpg">
+                <img src="/images/3.jpg">
             </div>
         </div>
         <div class="swiper-pagination"></div>
@@ -97,20 +90,18 @@
 </div>
 
 
-{% endblock %}
-
-{% block js %}
+{% endblock %} {% block js %}
 <script src="/js/swiper.min.js"></script>
 <script>
     var swiper = new Swiper('.swiper-container', {
         autoplay: {
-            delay: 2000,//1秒切换一次
+            delay: 2000, //1秒切换一次
         },
-        loop : true,
+        loop: true,
         pagination: {
             el: '.swiper-pagination',
             dynamicBullets: true,
-            
+
         },
     });
 </script>
