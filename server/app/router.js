@@ -36,22 +36,22 @@ module.exports = app => {
     // 书籍的管理 
     router.resources('book', '/api/book', app.middleware.checktoken(), controller.book)
 
-    // 章的管理  , app.middleware.checktoken()
+    // 章的管理 
     router.resources('chapter', '/api/chapter', app.middleware.checktoken(), controller.chapter)
 
-    // 节的管理 , app.middleware.checktoken()
+    // 节的管理
     router.resources('section', '/api/section', app.middleware.checktoken(), controller.section)
 
     // 博客管理
     router.resources('blog', '/api/blog', app.middleware.checktoken(), controller.blog)
 
-    // 视频的管理, app.middleware.checktoken()
+    // 视频的管理
     router.resources('video', '/api/video', app.middleware.checktoken(), controller.video)
 
-    // 下载的管理, app.middleware.checktoken()
+    // 下载的管理
     router.resources('resources', '/api/resource', app.middleware.checktoken(), controller.resource)
 
-    // 用户的管理 , app.middleware.checktoken()
+    // 用户的管理
     router.resources('user', '/api/user', app.middleware.checktoken(), controller.user)
 
     // 添加内容的图片
