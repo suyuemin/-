@@ -33,8 +33,8 @@ module.exports = app => {
     // 后台登录页展示
     router.get('/admin', controller.admin.index);
 
-    // 书籍的管理 app.middleware.checktoken(),
-    router.resources('book', '/api/book', controller.book)
+    // 书籍的管理 
+    router.resources('book', '/api/book', app.middleware.checktoken(), controller.book)
 
     // 章的管理  , app.middleware.checktoken()
     router.resources('chapter', '/api/chapter', app.middleware.checktoken(), controller.chapter)
