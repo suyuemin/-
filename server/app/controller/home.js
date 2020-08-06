@@ -11,12 +11,14 @@ class HomeController extends Controller {
         const ua = checkAgent(ctx.request.header["user-agent"]);
         // data： 书、博客、推荐书、推荐博客、推荐视频
         let data = await this.ctx.service.website.getHomePageData();
-        this.ctx.body = data;
-        //     if (ua) {
-        //         await ctx.render("pc/home.html", data)
-        //     } else {
-        //         await ctx.render("phone/home.html", data);
-        //     }
+        // this.ctx.body = data;
+        // console.log(data);
+
+        if (ua) {
+            await ctx.render("pc/home.html", data)
+        } else {
+            await ctx.render("phone/home.html", data);
+        }
     }
 }
 

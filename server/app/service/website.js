@@ -22,8 +22,8 @@ class WebsitService extends Service {
         // 推荐博客
         let recommendBlog = await this.ctx.service.blog.getBlogList({ page: 1, total: 3 })
 
-        // 推荐一个视频
-        let recommendvideo = await this.ctx.service.video.getVideoList({ page: 1, total: 1 })
+        // 推荐视频
+        let recommendvideo = await this.ctx.service.video.getVideoList({ page: 1, total: 3 })
         let title = "首页-suyuemin"
         return {
             bookList,

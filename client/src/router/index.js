@@ -11,6 +11,7 @@ import Book from '../views/Book.vue'
 import Chapter from '../components/Chapter'
 import Section from '../components/Section'
 import SectionDetail from '../components/SectionDetail'
+import Login from '../views/Login.vue'
 
 Vue.use(VueRouter)
 
@@ -79,15 +80,33 @@ const routes = [{
                 component: User
             },
         ]
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: Login
     }
 
 ]
 
 const router = new VueRouter({
-    mode: 'history',
+    // mode: 'history',
+
     base: process.env.BASE_URL,
     routes
 })
+
+// router.beforeEach((to, from, next) => {
+//     if (to.path == '/login') {
+//         next();
+//     } else {
+//         if (localStorage.getItem("token")) {
+//             next();
+//         } else {
+//             next("/login")
+//         }
+//     }
+// })
 
 //防止element-ui路由跳转报错
 const originalPush = VueRouter.prototype.push

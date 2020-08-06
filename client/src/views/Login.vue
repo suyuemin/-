@@ -1,10 +1,5 @@
 <template>
     <div class="login">
-        <!-- <form @submit.prevent="login">
-            <input type="text" v-model="user.username" />
-            <input type="text" v-model="user.password" />
-            <button>登录</button>
-        </form>-->
         <div class="form">
             <h1>用户登录</h1>
             <el-form label-width="80px">
@@ -40,7 +35,7 @@ export default {
                     localStorage.setItem("token", res.data.token);
                     this.$router.push("/");
                 } else {
-                    console.log("登录失败");
+                    alert("登录失败,请重新填写登陆信息")
                 }
             });
         },

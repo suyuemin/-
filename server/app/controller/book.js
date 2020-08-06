@@ -125,12 +125,12 @@ class BookController extends Controller {
         // 查询成功返回查询结果   所有书籍、推荐书籍、推荐博客、推荐视频、title
         // 查询失败返回null
         let data = await this.ctx.service.website.getBookList();
-        this.ctx.body = data;
-        // if (ua) {
-        //     await this.ctx.render("pc/book.html", data);
-        // } else {
-        //     await this.ctx.render("phone/book.html", data)
-        // }
+        // this.ctx.body = data;
+        if (ua) {
+            await this.ctx.render("pc/book.html", data);
+        } else {
+            await this.ctx.render("phone/book.html", data)
+        }
 
     }
 

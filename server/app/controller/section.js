@@ -122,12 +122,14 @@ class SectionController extends Controller {
         const id = this.ctx.params.id;
         // 根据节id查询   节内容、本书章节目录、所有书籍
         let data = await this.ctx.service.website.getSectionDetail(id);
-        this.ctx.body = data;
-        // if (ua) {
-        //     await this.ctx.render("pc/book_detail.html", data);
-        // } else {
-        //     await this.ctx.render("phone/book_detail.html", data);
-        // }
+        // 检测设备
+        const ua = checkAgent(ctx.request.header["user-agent"]);
+        // this.ctx.body = data;
+        if (ua) {
+            await this.ctx.render("pc/book_detail.html", data);
+        } else {
+            await this.ctx.render("phone/book_detail.html", data);
+        }
     }
 }
 

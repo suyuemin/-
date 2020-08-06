@@ -122,12 +122,12 @@ class VideoController extends Controller {
         const ua = checkAgent(ctx.request.header["user-agent"]);
         // 返回前100个视频、推荐书、推荐博客、推荐一个视频、title  
         const data = await this.ctx.service.website.getVideoList();
-        this.ctx.body = data;
-        // if (ua) {
-        //     await ctx.render("pc/video.html", data);
-        // } else {
-        //     await ctx.render("phone/video.html", data);
-        // }
+        // this.ctx.body = data;
+        if (ua) {
+            await ctx.render("pc/video.html", data);
+        } else {
+            await ctx.render("phone/video.html", data);
+        }
     }
 
     // 查看某一视频详情
@@ -139,12 +139,12 @@ class VideoController extends Controller {
         let id = this.ctx.params.id;
         // 返回id对应的视频类别、该类别的所有视频、title  
         const data = await this.ctx.service.website.getVideoDetail(id);
-        this.ctx.body = data;
-        // if (ua) {
-        //     await ctx.render("pc/video_detail.html", data);
-        // } else {
-        //     await ctx.render("phone/video_detail.html", data);
-        // }
+        // this.ctx.body = data;
+        if (ua) {
+            await ctx.render("pc/video_detail.html", data);
+        } else {
+            await ctx.render("phone/video_detail.html", data);
+        }
 
     }
 }

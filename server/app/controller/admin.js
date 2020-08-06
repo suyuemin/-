@@ -3,9 +3,9 @@
 const Controller = require('egg').Controller;
 
 class SuyueminController extends Controller {
-    // async index() {
-    //     await this.ctx.render("admin/index.html")
-    // }
+    async index() {
+        await this.ctx.render("admin/index.html")
+    }
 
     async login() {
         // 获取post请求参数  username,password
